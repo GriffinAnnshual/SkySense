@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="{% static 'style/about.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/3fe62278dc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="">
+        <nav class="nav-bar">
+                <h1 class="text-3xl font-bold"><a href="{% url 'home' %}">Sky Sense</a></h1>
+        </nav>
+    </header>
+    <section class="section-blog">
+        <div class="div-center-blog">
+            <div class="blog-content">
+                <div class="blog-inner">
+                    <h1 class="py-3 mb-3 text-2xl font-bold"><span class="special-color">About Sky Sense Research</span></h1>
+                    <h4 class="py-3 my-3 text-xl font-semibold">Article of our project is mentioned below</h2>
+                    <div class="blog-img-upper my-6">
+                        <div class="blog-inner-img">
+                            <img src="{% static 'image/blog_ori.png' %}"  alt="image">
+                        </div>
+                    
+                    </div>
+                    
+                    <a href="https://griffinannshual.hashnode.dev/evolution-of-sky-sense" target="_blank" class="my-6 "><button class="link-here get-w">Link Here !</button></a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

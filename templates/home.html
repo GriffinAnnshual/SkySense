@@ -1,0 +1,324 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page}}</title>
+    <link rel="stylesheet" href="{% static 'style/home.css'%}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/3fe62278dc.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<style>
+    .gv-log{
+        background-image:url(/static/image/background.png);
+        background-size: cover;
+        color: white;
+        padding: 2rem;  
+    }
+    .govern-first{
+        text-align: center;
+        font-size: larger;
+        font-weight: 800;
+    }
+    .govern-second{
+        margin-top: 1rem;
+        padding: 2rem;
+        text-align: center;
+    }
+    .govern-second h1{
+        padding: 1rem;
+        font-size: large;
+        font-weight: 600;
+    }
+    .govern-second button{
+        padding: 1rem 1.5rem;
+        margin: 1rem;
+    }
+</style>
+<body onload="onload()">
+    <section class="home">
+        <div>
+            <nav>
+                <div class="first-nav">
+                    <h1 class="text-4xl text-white ml-6 font-bold">Sky Sense</h1>
+                </div>
+                <div class="second-nav">
+                    <div class="second-nav-element text-center">
+                        <div class="inline">
+                            <a href="{% url 'emergency' %}" class="text-xl text-white font-semibold">Emergency</a> 
+                        </div>
+                        <div class="inline">
+                            <a href="{% url 'about' %}" class="text-white font-semibold text-xl"> About SkySense</a>
+                        </div>
+                        <div class="dropdown inline">
+                            <a href=""><button class="dropbtn text-xl font-semibold">Services 
+                                <i class="fa fa-caret-down"></i>
+                                </button>
+                            </a> 
+                            <div class="dropdown-content">
+                              <a href="{% url 'whatsapp_permission' %}">Whatsapp Service</a>
+                              <a href="{% url 'sms_details' %}">Sms Service</a>
+                              <a href="#">Early Warning</a>
+                            </div>
+                        </div> 
+                    </div>  
+                    <div class="nav-login">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'logout' %}" ><button class="px-5 py-3 rounded-xl bg-cyan-600 text-white text-xl nav-login-anker">
+                            Logout
+                        </button></a>
+                        {% else %}
+                        <a href="{% url 'login' %}" ><button class="px-5 py-3 rounded-xl bg-cyan-600 text-white text-xl nav-login-anker">
+                            Login
+                        </button></a>
+                        {% endif %}
+                    </div>
+                </div>
+               
+            </nav>
+        </div>
+        <div class="weather-display-container">
+            <div class="ultimate-companion">
+                <div>
+                    <h1 class="text-4xl text-white font-semibold">Your Ultimate <span class="special-color font-bold">Climate Companion</span> </h1>
+                </div>
+            </div>
+            <div class="location-display">
+
+                <div class="location-display-image">
+                    <div>
+                        <img src="{% static 'image/sun.png' %}">
+                    </div>
+                    
+                </div>  
+                <div class="overall-weather">
+                    <div class="overall-weather-details">
+                        <h2 class="text-4xl text-white my-5"> {{temp}}°C </h2>
+                        <h1 class="text-5xl text-white font-extrabold">{{first_main}}</h1>
+                    </div>
+                </div>
+                <div class="location">
+                    <div class="location-name">
+                        <h1 class="text-white text-6xl font-extrabold"> {{land}} </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-forecast">
+                <div class="next-4days-forecast" style="display:flex;justify-content:space-between">
+                    {% for today in next_four%}
+                        <div class="days-col">
+                            <div class="class">
+                                <h1 class="text-2xl font-extrabold">{{today.2}}</h1>
+                                <div>
+                                    {% if today.0 < 300 %}
+                                        <img src="{% static 'image/thunder.png' %}" alt="">
+                                    {% elif today.0 < 400 %}
+                                        <img src="{% static 'image/drizzle.png' %}" alt="">
+                                    {% elif today.0 < 600 %}
+                                        <img src="{% static 'image/heavy-rain.png' %}" alt="">
+                                    {% elif today.0 < 700%}
+                                        <img src="{% static 'image/snowflake.png' %}" alt="">
+                                    {% elif today.0 < 800 %}
+                                        <img src="{% static 'image/clouds.png' %}" alt="">
+                                    {% else %}
+                                        <img src="{% static 'image/sun.png' %}" alt="">
+                                    {% endif %}
+                                    
+                                </div>
+                                <h1 class="font-bold">{{today.1}}</h1>
+                                <h2>Temp : {{today.4}} °C</h2>
+                                <h2 >humidity : {{today.3}}°</h2>
+                            </div>
+                        </div>
+                    {% endfor%}
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+    
+    <!-- services provided by us -->
+    <section class="services-provided-section">
+        <div class="upper-div">
+            <h1 class="text-5xl text-white font-bold">Services Provided By <span class="special-color">SkySense</span></h1>
+            <div class="services-row">
+                <div class="services-col text-center">
+                    <h1 class="text-3xl text-white font-semibold">Whatsapp Bot</h1>
+                    <div class="">
+                        <a href="{% url 'whatsapp_permission' %}"> <button class="custom-btn btn-12"><span>Click!</span><span>Get Now</span></button></a>
+                        <img src="{% static 'image/whatsapp.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="services-col text-center">
+                    <h1 class="text-3xl text-white font-semibold">SMS service</h1>
+                    <div>
+                        <a href="{% url 'sms_details' %}"> <button class="custom-btn btn-12"><span>Click!</span><span>Get Now</span></button></a>
+                        <img src="{% static 'image/chat.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="services-col text-center">
+                    <h1 class="text-3xl text-white font-semibold">Early Warning System</h1>
+                    <div class="text-center">   
+                        <a href="#" class=""><button class="custom-btn btn-12"><span>Click!</span><span>Get Now</span></button></a>
+                        <img src="{% static 'image/warning.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- forest officals section -->
+    
+
+    <!-- our research -->
+    <div class="slider-top py-8 bg-gray-100 pb-8">
+        <div class="text-center py-4">
+            <h1 class="text-4xl font-extrabold text-white">Feedbacks</h1>
+        </div>
+        <div class="slideshow-container rounded-xl">
+
+            <div class="mySlides">
+              <div class="numbertext">1 / 3</div>
+              <div class="slider-content">
+                <div class="slider-img">
+                    <div>   
+                        <img src="{% static 'image/balaschandran.jpg' %}" style="width:100%" class="img">
+                    </div>
+                    
+                </div>
+                <div class="slider-name" style="line-height: 3;">
+                    <div style="text-align: center;" class="mb-8">
+                        <h1 class="text-4xl font-extrabold"><q> SkySense bridges the gap between weather forecasting and boardcasting </q></h1>
+                    </div>
+                    <div class="" style="text-align: right;">
+                        <h2 class="text-xl font-semibold">- Dr.S. Balachandran Deputy Director General IMD Chennai</h2>
+                    </div>
+                </div>
+              </div>
+              
+              
+            </div>
+            
+        </div>
+        
+    </div>
+    <!-- government officers login portal -->
+    <section class="gv-log">
+        <div class="div-log-govern ">
+            <div class="govern-first">
+                <h1 class="text-3xl special-color">Government Officers Login Portal</h1>
+            </div>
+            <div class="govern-second">
+                <h1>The government officals who are register with skysense can Log In here !</h1>
+                <a href="{% url 'officer_login' %}"><button class="bg-teal-400 rounded-xl">Log in</button></a>
+            </div>
+        </div>
+    </section>
+    <!-- testimonail section -->
+
+    <section class="testimonial">
+        <div class="our-webapp text-center">
+            <h2><span><a href="{% url 'about' %}">@about</a></span> our project by <span><a href="">HORIZON ROOKIES</a> </span></h2>
+        </div>
+    </section>
+    <script>
+        let slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            }
+    </script>
+    <script>
+        console.log('helleworld');
+        function navigator(){
+            if ("geolocation" in navigator) {
+                // check if geolocation is supported/enabled on current browser
+                navigator.geolocation.getCurrentPosition(
+                 function success(position) {
+                   // for when getting location is a success
+                   console.log('latitude', position.coords.latitude, 
+                               'longitude', position.coords.longitude);
+                 },
+                function error(error_message) {
+                  // for when getting location results in an error
+                  console.error('An error has occured while retrievinglocation', error_message)
+                }  
+                );
+            }
+              else {
+                // geolocation is not supported
+                // get your location some other way
+                console.log('geolocation is not enabled on this browser')
+              }
+              latitude = position.coords.latitide;
+              longitude = position.coords.longitude;
+              data = {
+                'lat':latitude,
+                'lon':longitude
+              }
+              return data;
+        }
+        
+        function getCookie(name) {
+            let value = "; " + document.cookie;
+            let parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+        function onload(){
+            
+            var dataToSend = {
+                'latitude': 10,
+                'longitude': 20,
+                // You can add more data fields as needed
+            };
+            console.log(JSON.stringify(dataToSend));
+            console.log(getCookie('csrftoken'));
+            // Make a POST request to your Django backend
+            fetch('/ajax/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),  // Add CSRF token for security (if using Django forms)
+                },
+                body: JSON.stringify(dataToSend),
+               
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from Django
+                console.log(data);  
+            })
+            .catch(error => {
+                console.error('Error sending data:', error);
+            });
+        }
+       
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

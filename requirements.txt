@@ -1,0 +1,7 @@
+APScheduler==3.10.4
+Django==4.2.7
+django_apscheduler==0.6.2
+geocoder==1.38.1
+geopy==2.3.0
+Requests==2.31.0
+twilio==8.5.0

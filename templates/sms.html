@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sms</title>
+    <link rel="stylesheet" href="{% static 'style/sms.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head> 
+<body class="bg-gray-100">
+
+    <div class="px-3 py-4 text-center font-bold text-3xl bg-cyan-900 text-white sms-nav">
+        <nav>
+           <a href="{% url 'home' %}">Sky Sense</a> 
+        </nav>
+    </div>
+
+    <section class="top-whatsapp">
+        
+        <div class="center-div">
+            <div class="left">
+                <div class="big-top-w">
+                    <h1>Sms Service</h1>
+                </div>
+                <div>
+                    <h1 class="text-xl my-7 special-color-r">Overcome No-Internet Connection</h1>
+                    <h2 class="text-l">Weather data will reach you even without internet</h2>
+                    <h2 class="text-l"></h2>
+                    <h1 class="text-xl align-center my-7 special-color-r">Features</h1>
+                    <table class="feature-table">
+                        <tr>
+                            <td style="width: 70%;">Receive Updates Anywhere</td>
+                            <td><img src="{% static 'image/checklist.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>Dangerous Weather Updates</td>
+                            <td><img src="{% static 'image/checklist.png' %}"></td>
+                        </tr>
+                        <tr>
+                            <td>Know Your Weather Condition</td>
+                            <td><img src="{% static 'image/checklist.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td>Accurate weather information from IMD</td>
+                            <td><img src="{% static 'image/checklist.png' %}" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><img src="{% static 'image/checklist.png' %}" alt=""></td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                
+            </div>
+            <div class="right">
+                <div>
+                    <img src="{% static 'image/no-wifi.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- the redirect page -->
+
+    <section class="steps-for-whatsapp">
+        <div class="steps-width-div">
+            <div class="steps-row">
+                <div class="text-center ">
+                    <h1><span class="special-color-r text-4xl">Terms and Conditions</span> </h1>
+                </div>
+
+                <div class="w-step-2">
+                    <h1 class="py-3 text-2xl">We use whatsapp services for sending and updating you with the most recent weather updates</h1>
+                    <h2 class="py-3 text-2xl">To continue with this services click the below button and follow the steps given below :</h2>
+                    <div class="ul-li-step">
+                        <div class="ul-li-con">
+                            <ul>
+                                <li><span>Click the button below</span> it takes you to a whatsapp permissions website</li>
+                                <li><span>Click continue to whatsapp</span></li>
+                                <li>It will take you to your whatsapp and shows an join message already typed in the text box <span>Send that message</span></li>
+                                <li>You will receive a success message and you are all set to use our application</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="ul-li-img">
+                            <img src="{% static 'image/sms.png' %}" alt="">
+                        </div>
+                    </div>  
+                    <div class="text-center py-5 get-w">
+                        <a href=""><button class="rounded-xl px-3 py-4">GET SMS</button></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

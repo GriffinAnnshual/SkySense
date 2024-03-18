@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 50%;
+    margin: auto;
+    height: 100vh;
+    background-image: url(/static/image/background.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-div{
+    padding: 2rem;
+    background:#3C5460;
+    border-radius: 16px;
+    color: white;
+}
+
+.create-Acc{
+    padding: 1rem !important;
+    background: #24353E;
+    border-radius: 16px;
+    text-align: center;
+}
+
+div form{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 1.5rem;
+}
+
+
+
+.form .common{
+
+    margin-bottom: 1rem;
+    padding:.5rem .5rem;
+    line-height: 2;
+}
+
+.form label{
+    color: #23c483;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.common input{
+    background:transparent;
+    border-bottom:3px solid  #23c483 !important;
+    color: white;
+}
+
+
+.form .common input , select{
+    padding:1rem 1rem 0 1rem;
+    outline: 0;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+.form .common input:focus{
+    background: transparent;
+    font-size: 1.1rem;
+}
+
+.common option:hover{
+    background: gray;
+}
+
+
+
+.big{
+    grid-row: 5/5;
+    grid-column: 2/3;
+    transform: translateX(-6rem);
+}
+
+.get-w button{
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+   
+  }
+
+  .get-w button:hover{
+        background-color: #23c483;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);   
+  }
+  .get-w button:active{
+    transform:translateY(-1px);
+}
+
+select{
+    width: 70%;
+    padding-bottom: .5rem;
+}
